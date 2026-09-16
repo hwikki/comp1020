@@ -3,6 +3,7 @@
 import graphics
 from Dice import *
 
+#Create Horse class to make them race
 class Horse:
     def __init__(self,speed,y,image,window):
         self.x_pos = 0
@@ -11,9 +12,10 @@ class Horse:
         self.window = window
         self.dice = Dice(speed)
 
+    #Roll the dice to make horses move randomly
     def move(self):
         self.x_pos += self.dice.roll()
-
+    #Make horses in the screen
     def draw(self):
         self.image.draw_at_pos(self.window,self.x_pos, self.y_pos)
 
@@ -27,19 +29,22 @@ def main():
     horse2_image = graphics.Image(graphics.Point(0, 150), "horse2.png")
     horse3_image = graphics.Image(graphics.Point(0, 250), "horse3.png")
 
+    #Make three horses with different speeds and positions
     horse1 = Horse(6,50,horse1_image,window)
     horse2 = Horse(5,150,horse2_image,window)
     horse3 = Horse(7,250,horse3_image,window)
-
+    finish_line = graphics.Line( graphics.Point(650,0), graphics.Point(650,350) )
+    
     horse1.draw()
     horse2.draw()
     horse3.draw()
 
-    finish_line = graphics.Line( graphics.Point(650,0), graphics.Point(650,350) )
+
     finish_line.draw(window)
 
     window.getMouse()
 
+    #Continue the race until they have a winner
     while not (horse1.crossed_finish_line(650) or horse2.crossed_finish_line(650) or horse3.crossed_finish_line(650)):
         horse1.move()
         horse2.move()
@@ -59,6 +64,7 @@ def main():
         horse2_crossed = horse2.crossed_finish_line(650)
         horse3_crossed = horse3.crossed_finish_line(650)
 
+    #If there is a duplicated winner, print tie. If not, they'll have winner message.
     if horse1_crossed and horse2_crossed:
         print("Tie Horse 1 with Horse 2")
     elif horse1_crossed and horse3_crossed:
