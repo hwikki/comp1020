@@ -5,20 +5,20 @@ from Dice import *
 
 class Horse:
     def __init__(self,speed,y,image,window):
-        self.x = 0
-        self.y = y
+        self.x_pos = 0
+        self.y_pos = y
         self.image = image
         self.window = window
         self.dice = Dice(speed)
 
     def move(self):
-        self.x += self.dice.roll()
+        self.x_pos += self.dice.roll()
 
     def draw(self):
-        self.image.draw_at_pos(self.window,self.x, self.y)
+        self.image.draw_at_pos(self.window,self.x_pos, self.y_pos)
 
     def crossed_finish_line(self, x):
-        return self.x >= x
+        return self.x_pos >= x
 
 def main():
     window = graphics.GraphWin("Horse",700,350)
@@ -27,7 +27,7 @@ def main():
     horse2_image = graphics.Image(graphics.Point(0, 150), "horse2.png")
     horse3_image = graphics.Image(graphics.Point(0, 250), "horse3.png")
 
-    horse1 = Horse(3,50,horse1_image,window)
+    horse1 = Horse(6,50,horse1_image,window)
     horse2 = Horse(5,150,horse2_image,window)
     horse3 = Horse(7,250,horse3_image,window)
 
