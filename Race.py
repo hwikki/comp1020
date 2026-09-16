@@ -5,7 +5,7 @@ import Dice
 
 class Horse:
     def __init__(self,speed,y,image,window):
-        self.x = 20
+        self.x = 0
         self.y = y
         self.image = image
         self.window = window
@@ -18,7 +18,7 @@ class Horse:
         self.image.draw_at_pos(self.window,self.x, self.y)
 
     def crossed_finish_line(self, x):
-        return x <= self.x
+        return self.x >= x
 
 def main():
     window = graphics.GraphWin("Horse",700,350)
