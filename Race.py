@@ -1,7 +1,7 @@
 #A2: Horse Race Assignment by Yoon Ju (u1658382)
 
 import graphics
-import Dice
+from Dice import *
 
 class Horse:
     def __init__(self,speed,y,image,window):
