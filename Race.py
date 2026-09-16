@@ -9,7 +9,7 @@ class Horse:
         self.y = y
         self.image = image
         self.window = window
-        self.dice = Dice.Dice(speed)
+        self.dice = Dice(speed)
 
     def move(self):
         self.x += self.dice.roll()
